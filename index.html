@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Hub</title>
+<title>Game Hub</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -18,723 +18,420 @@
 body{
   font-family:'Inter',sans-serif;
   min-height:100vh;
-  overflow-x:hidden;
+  display:flex;
 
-  padding:40px 30px;
-
-  transition:
-    background 0.5s ease,
-    color 0.5s ease;
-
-  background:
-    linear-gradient(135deg,#0f172a,#111827,#020617);
-
-  color:white;
+  /* PURPLE + DARK GREY THEME */
+  background:linear-gradient(135deg,#0b0b12,#141427,#1a1330);
+  color:#ffffff;
 }
 
-/* Animated background glow */
+/* SIDEBAR */
+.sidebar{
+  width:270px;
+  padding:20px;
+  position:sticky;
+  top:0;
+  height:100vh;
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255,255,255,0.03),
-      rgba(255,255,255,0.01)
-    );
-  backdrop-filter:blur(2px);
-  z-index:-1;
-}
-
-/* Header */
-
-.header{
-  text-align:center;
-  margin-bottom:50px;
-}
-
-.header h1{
-  font-size:4rem;
-  font-weight:800;
-  letter-spacing:-2px;
-
-  background:linear-gradient(to right,#ffffff,#93c5fd,#c4b5fd);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  text-shadow:
-    0 0 30px rgba(255,255,255,0.15);
-
-  animation:fadeDown 1s ease;
-}
-
-.header p{
-  margin-top:10px;
-  color:#cbd5e1;
-  font-size:1.1rem;
-}
-
-/* Grid */
-
-.container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-
-/* Card */
-
-.box{
-  position:relative;
-
-  background:rgba(255,255,255,0.08);
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  border-radius:24px;
-
-  padding:24px;
-
+  background:rgba(20,20,35,0.7);
   backdrop-filter:blur(14px);
 
-  overflow:hidden;
+  border-right:1px solid rgba(168,85,247,0.25);
 
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    border .35s ease;
-
-  animation:fadeUp .7s ease forwards;
-
-  opacity:0;
-}
-
-/* Card glow */
-
-.box::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,0.15),
-    rgba(255,255,255,0),
-    rgba(96,165,250,0.2)
-  );
-
-  border-radius:24px;
-
-  z-index:-1;
-}
-
-/* Hover */
-
-.box:hover{
-  transform:translateY(-10px) scale(1.02);
-
-  border:1px solid rgba(255,255,255,0.25);
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.4),
-    0 0 30px rgba(96,165,250,0.15);
-}
-
-/* Game title */
-
-.box h3{
-  font-size:1.5rem;
-  font-weight:700;
-  margin-bottom:10px;
-}
-
-/* Description */
-
-.box p{
-  color:#cbd5e1;
-  line-height:1.6;
-  min-height:60px;
-  margin-bottom:20px;
-}
-
-/* Button */
-
-.box button{
-  border:none;
-  outline:none;
-
-  background:linear-gradient(
-    135deg,
-    #3b82f6,
-    #8b5cf6
-  );
-
-  color:white;
-
-  padding:14px 22px;
-
-  border-radius:14px;
-
-  font-weight:700;
-  font-size:1rem;
-
-  cursor:pointer;
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-
-  width:100%;
-}
-
-/* Button hover */
-
-.box button:hover{
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 10px 25px rgba(99,102,241,0.4);
-}
-
-/* Button click */
-
-.box button:active{
-  transform:scale(0.98);
-}
-
-/* Animations */
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes fadeDown{
-  from{
-    opacity:0;
-    transform:translateY(-30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* Mobile */
-
-@media(max-width:600px){
-
-  body{
-    padding:25px 18px;
-  }
-
-  .header h1{
-    font-size:2.8rem;
-  }
-
-}
-
-/* TOPBAR */
-
-.topbar{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:40px;
+  flex-direction:column;
+  gap:12px;
 }
 
 .logo{
-  font-size:2rem;
+  font-size:1.8rem;
   font-weight:800;
-
-  background:linear-gradient(to right,#60a5fa,#c084fc);
+  background:linear-gradient(to right,#a855f7,#6366f1);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-/* THEME SELECT */
-
-/* THEME DROPDOWN */
-
-#themeSelector{
-
-  appearance:none;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-
-  padding:14px 22px;
-
-  border:none;
+/* SEARCH */
+.search{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(168,85,247,0.25);
   outline:none;
 
-  border-radius:14px;
+  background:rgba(0,0,0,0.3);
+  color:white;
+}
 
+/* GENRES */
+.genres{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.genre-btn{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(168,85,247,0.25);
+  cursor:pointer;
+  font-size:0.75rem;
+
+  background:rgba(0,0,0,0.2);
+  color:#cbd5e1;
+
+  transition:.2s;
+}
+
+.genre-btn:hover{
+  transform:translateY(-2px);
+  border-color:#a855f7;
+}
+
+.genre-btn.active{
+  background:linear-gradient(135deg,#a855f7,#6366f1);
+  color:white;
+  border:none;
+}
+
+/* MAIN */
+.main{
+  flex:1;
+  padding:35px;
+}
+
+.header h1{
+  font-size:3rem;
+  font-weight:800;
+}
+
+.header p{
+  color:#cbd5e1;
+  margin-top:8px;
+}
+
+/* GRID */
+.container{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+/* CARD */
+.box{
+  background:rgba(20,20,35,0.7);
+  border:1px solid rgba(168,85,247,0.2);
+  border-radius:18px;
+  padding:18px;
+
+  backdrop-filter:blur(10px);
+
+  transition:.25s;
+}
+
+.box:hover{
+  transform:translateY(-6px);
+  border-color:#a855f7;
+  box-shadow:0 10px 30px rgba(168,85,247,0.15);
+}
+
+.box h3{
+  font-size:1.2rem;
+  margin-bottom:6px;
+}
+
+.box p{
+  color:#cbd5e1;
+  font-size:0.9rem;
+  margin-bottom:10px;
+}
+
+.genre-tag{
+  display:inline-block;
+  font-size:0.7rem;
+  padding:4px 8px;
+  border-radius:999px;
+  margin-bottom:8px;
+
+  background:rgba(168,85,247,0.15);
+  color:#c4b5fd;
+  border:1px solid rgba(168,85,247,0.25);
+}
+
+/* BUTTON */
+.box button{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
   font-weight:700;
-  font-size:1rem;
-
   cursor:pointer;
 
-  color:white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #3b82f6,
-      #8b5cf6
-    );
-
-  box-shadow:
-    0 10px 25px rgba(99,102,241,0.25);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    opacity .25s ease;
-
-  position:relative;
-
-  min-width:80px;
-}
-
-/* Hover */
-
-#themeSelector:hover{
-
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 15px 30px rgba(99,102,241,0.4);
-}
-
-/* Click */
-
-#themeSelector:active{
-  transform:scale(0.98);
-}
-
-/* Dropdown options */
-
-#themeSelector option{
-  background:#111827;
-  color:white;
-  font-weight:700;
-}
-
-/* LIGHT THEME */
-
-body.light #themeSelector{
-
-  background:
-    linear-gradient(
-      135deg,
-      #2563eb,
-      #7c3aed
-    );
-
+  background:linear-gradient(135deg,#a855f7,#6366f1);
   color:white;
 }
 
-/* NEON THEME */
-
-body.neon #themeSelector{
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff00ff,
-      #00ffff
-    );
-
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.25);
-}
-/* LIGHT THEME */
-
-body.light{
-
-  background:
-    linear-gradient(
-      135deg,
-      #f8fafc,
-      #e2e8f0
-    );
-
-  color:#111827;
+.box button:hover{
+  filter:brightness(1.1);
 }
 
-body.light .box{
-  background:rgba(255,255,255,0.75);
-
-  border:1px solid rgba(0,0,0,0.08);
-
-  color:#111827;
-}
-
-body.light .box p{
-  color:#374151;
-}
-
-body.light #themeSelector{
-  background:white;
-  color:black;
-}
-
-body.light .header p{
-  color:#374151;
-}
-
-/* NEON THEME */
-
-body.neon{
-
-  background:
-    radial-gradient(circle at top left,#ff00ff 0%,transparent 30%),
-    radial-gradient(circle at bottom right,#00ffff 0%,transparent 30%),
-    linear-gradient(135deg,#050816,#020617);
-
-  color:white;
-}
-
-body.neon .box{
-
-  background:rgba(0,0,0,0.45);
-
-  border:1px solid rgba(0,255,255,0.3);
-
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.15);
-}
-
-body.neon .box:hover{
-
-  box-shadow:
-    0 0 25px rgba(255,0,255,0.3),
-    0 0 40px rgba(0,255,255,0.25);
-}
-
-body.neon button{
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff00ff,
-      #00ffff
-    );
-}
-
-body.neon .header h1{
-
-  background:
-    linear-gradient(
-      to right,
-      #ff00ff,
-      #00ffff
-    );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  .topbar{
-    flex-direction:column;
-    gap:20px;
-  }
-
-}
 </style>
 </head>
 
 <body>
-<div class="topbar">
 
-  <div class="logo">
-    🎮 Hub
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <div class="logo">🎮 Hub</div>
+
+  <input class="search" id="search" placeholder="Search games..." />
+
+  <div class="genres" id="genreBar"></div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="header">
+    <h1>Game Hub</h1>
+    <p>Search, filter, and launch instantly</p>
   </div>
 
-  <select id="themeSelector">
-    <option value="dark">Dark</option>
-    <option value="light">Light</option>
-    <option value="neon">Neon</option>
-  </select>
-
+  <div class="container" id="boxContainer"></div>
 </div>
-<div class="header">
-  <h1>Game Hub</h1>
-  <p>Launch your favorite games instantly</p>
-</div>
-
-<div class="container" id="boxContainer"></div>
-
-<script type="application/json" id="linkData">
-[
-  {
-    "name":"Balatro",
-    "description":"Poker-inspired roguelike deck builder.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Balatro/refs/heads/main/balatro.html"
-  },
-  {
-    "name":"Minecraft",
-    "description":"Classic sandbox survival experience.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/EaglrCraft1.8/refs/heads/main/1.8.html"
-  },
-  {
-    "name":"Unlimited Wordle",
-    "description":"Play unlimited Wordle puzzles.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Wordle/refs/heads/main/Wordle.html"
-  },
-  {
-    "name":"2048",
-    "description":"Merge tiles to reach 2048 or more.",
-    "url":"https://raw.githubusercontent.com/maxwellrszimmerman-source/FJAOJW/refs/heads/main/2048.html"
-  },
-  {
-    "name":"Stickman Hook",
-    "description":"Swing through obstacles with awesome characters.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Stick-Man-Hook/refs/heads/main/StickManHook.html"
-  },
-  {
-    "name":"Mario 64",
-    "description":"Retro 3D platforming adventure.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Mario-64/refs/heads/main/Mario-64.html"
-  },
-  {
-    "name":"Sandboxels",
-    "description":"Physics sandbox simulator.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Sand-Boxels/refs/heads/main/Sandboxels.html"
-  },
-  {
-    "name":"Slow Roads",
-    "description":"Relaxing endless driving experience.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Slow-Roads/refs/heads/main/Slow%20roads.html"
-  },
-  {
-    "name":"Hextris",
-    "description":"Fast-paced hexagon puzzle game.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Hextris/refs/heads/main/Hextris.html"
-  },
-  {
-    "name":"TinyFishing",
-    "description":"Catch fish and upgrade gear.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Tiny-Fishing/refs/heads/main/TinyFishing.html"
-  },
-  {
-    "name":"Cluster Rush",
-    "description":"Truck-jumping parkour game.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Cluster-Rush/refs/heads/main/ClusterRush.html"
-  },
-  {
-    "name":"Slope",
-    "description":"Endless ball-rolling speed game.",
-    "url":"https://raw.githubusercontent.com/CorduroyBrick49/Test/refs/heads/main/slope.html"
-  },
-  {
-  "name":"Corball",
-  "description":"Quick, reaction speed game aimed at shooting darts at a rotating circle, don’t hit in the same spot.",
-"url":"https://raw.githubusercontent.com/CorduroyBrick49/CoreBall/refs/heads/main/Corball.html"
-  },
-  {
-  "name":"60s Burger Run",
-  "description":"You are a obese guy and your favorite burger place is closing soon, get there in 60s or else!",  "url":"https://raw.githubusercontent.com/Putdyfmg/60sBurgerRun/refs/heads/main/60s_burger_run_standalone.htm"
-  },
- {
-  "name":"Retro Bowl",
-  "description":"A realistic 8-bit football game where you can manage and play!",  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Retro-bowl/refs/heads/main/retrobowl.html"
-  },
-{
-  "name":"Capybara Clicker",
-  "description":"Click a Capybara as many times as you can and upgrade your way to superstardom.",  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Capybara-Clicker/refs/heads/main/capybaraclicker.html"
-  },
-{
-  "name":"Crazy Cars",
-  "description":"Fast-paced driving games featuring stunts and obstacles.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Crazy-Cars/refs/heads/main/crazycars.html"
-  },
-{
-  "name":"Five Nights at Freddie’s",
-  "description":"The classic game, don’t get eaten by the animatronics, have to wait until narrator stops talking until the text box goes away.",
-"url":"https://raw.githubusercontent.com/StaticQuasar931/FNAF-5/refs/heads/main/index.html"
-  },
-  {
-  "name":"Drift Boss",
-  "description":"One-button browser game about navigating endless winding roads.",
-"url":"https://raw.githubusercontent.com/CorduroyBrick49/Drift-Boss/refs/heads/main/driftboss.htm"
-  },
-  {
-  "name":"Cookie Clicker",
-  "description":"Game about clicking to bake endless cookies.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Cookie-Clicker/refs/heads/main/cookieclicker.htm"
-  },
-      {
-  "name":"Stack",
-  "description":"Tile stacking timing based reaction game.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Stack/refs/heads/main/stack.html"
-  },
-    {
-  "name":"Tag",
-  "description":"A fast-paced, local multiplayer adaptation of the classic childhood chase game.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Tag/refs/heads/main/tag.html"
-  },
-      {
-  "name":"Ragdoll Archers",
-  "description":"Prescision based archery game.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Ragdoll-Archers/refs/heads/main/ragdollarchers.htm"
-  },
-    {
-  "name":"Paper.io",
-  "description":"Browser-based territory-capture game.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Paper-io/refs/heads/main/paperio2.htm"
-  },
-      {
-  "name":"Drive mad",
-  "description":"Drive cars over dangerous terrain.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/DriveMad/refs/heads/main/drivemad.htm"
-  },
-    {
-  "name":"Crossy Road",
-  "description":"Your a chicken who needs to get to the other side of the road.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/CrossyRoad/refs/heads/main/crossyroad.htm"
-  },
-    {
-  "name":"Tunnel Rush",
-  "description":"Game where you rush through tunnels.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Tunnel-Rush/refs/heads/main/tunnelrush.html"
-  },
-   {
-  "name":"Fruit Ninja",
-  "description":"Cut Fruit.",
-  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Fruit-Ninja-/refs/heads/main/fruitninja.html"
-  }
-
-]
-
-</script>
 
 <script>
 
-const data = JSON.parse(
-  document.getElementById("linkData").textContent
-);
+const data = [
+  {
+  "name":"Balatro",
+  "description":"Poker-inspired roguelike deck builder.",
+  "genre":"Card",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/balatro.html"
+  },
+  {
+  "name":"Minecraft",
+  "description":"Classic sandbox survival experience.",
+  "genre":"Sandbox",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/1.8.html"
+  },
+  {
+  "name":"Unlimited Wordle",
+  "description":"Play unlimited Wordle puzzles.",
+  "genre":"Puzzle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/wordleunlimited.html"
+  },
+  {
+  "name":"2048",
+  "description":"Merge tiles puzzle.",
+  "genre":"Puzzle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/2048.html"
+  },
+  {
+  "name":"Stickman Hook",
+  "description":"Swing through obstacles.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/stickmanhook.html"
+  },
+  {
+  "name":"TinyFishing",
+  "description":"Fishing idle game.",
+  "genre":"Idle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/tinyfishing.html"
+  },
+  {
+  "name":"Cluster Rush",
+  "description":"Truck parkour.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/clusterrush.html"
+  },
+  {
+  "name":"Slope",
+  "description":"Speed ball game.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/slope.html"
+  },
+  {
+  "name":"60s Burger Run",
+  "description":"Race against time.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/60s_burger_run_standalone.html"
+  },
+  {
+  "name":"Retro Bowl",
+  "description":"Football manager.",
+  "genre":"Sports",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/retrobowl.html"
+  },
+  {
+  "name":"Capybara Clicker",
+  "description":"Idle clicker.",
+  "genre":"Idle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/capybaraclicker.html"
+  },
+  {
+  "name":"Crazy Cars",
+  "description":"Driving stunts.",
+  "genre":"Driving",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/crazycars.html"
+  },
+  {
+  "name":"Drift Boss",
+  "description":"One-button driving.",
+  "genre":"Driving",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/driftboss.html"
+  },
+  {
+  "name":"Cookie Clicker",
+  "description":"Idle cookies.",
+  "genre":"Idle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/cookieclicker.html"
+  },
+  {
+  "name":"Stack",
+  "description":"Stack timing.",
+  "genre":"Puzzle",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/stack.html"
+  },
+  {
+  "name":"Ragdoll Archers",
+  "description":"Archery battles.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/ragdollarchers.htm"
+  },
+  {
+  "name":"Crossy Road",
+  "description":"Cross safely.",
+  "genre":"Arcade",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/crossyroad.html"
+  },
+  {
+  "name":"Fruit Ninja",
+  "description":"Slice fruit.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/fruitninja.html"
+  },
+    {
+  "name":"Backrooms",
+  "description":"Endless, maze-like alternate dimension of empty, yellow rooms.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/backrooms.html"
+  },
+      {
+  "name":"Time Shooter",
+  "description":"A shooter where time advances only when you move.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/timeshooter2.html"
+  },
+      {
+  "name":"MotoX3M",
+  "description":"A fast-paced stunt bike racing game with challenging obstacles.",
+  "genre":"Driving",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/motox3m.html"
+  },
+      {
+  "name":"OvO",
+  "description":"Stickman platformer game focusing on parkour.",
+  "genre":"Platformer",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/ovo.html"
+  },
+      {
+  "name":"Stick Fighter",
+  "description":"Physics-based multiplayer game where stick figures battle using weapons.",
+  "genre":"Action",
+  "url":"https://raw.githubusercontent.com/CorduroyBrick49/Games/refs/heads/main/stickfighter.html"
+  }
+];
 
 const container = document.getElementById("boxContainer");
+const search = document.getElementById("search");
+const genreBar = document.getElementById("genreBar");
 
-data.forEach((item,index)=>{
+let activeGenre = "All";
+let boxes = [];
 
-  const box = document.createElement("div");
-  box.className = "box";
+/* GENRES */
+const genres = ["All", ...new Set(data.map(g=>g.genre))];
 
-  box.style.animationDelay = `${index * 0.08}s`;
+genres.forEach(g=>{
+  const btn = document.createElement("button");
+  btn.className = "genre-btn";
+  btn.textContent = g;
 
-  box.innerHTML = `
-    <h3>${item.name}</h3>
-    <p>${item.description}</p>
-    <button>Launch Game</button>
-  `;
+  if(g==="All") btn.classList.add("active");
 
-  const button = box.querySelector("button");
+  btn.onclick = ()=>{
+    document.querySelectorAll(".genre-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeGenre = g;
+    applyFilters();
+  };
 
-  button.onclick = async () => {
+  genreBar.appendChild(btn);
+});
 
-    button.textContent = "Loading...";
+/* RENDER */
+function render(list){
+  container.innerHTML = "";
+  boxes = [];
 
-    try{
+  list.forEach(item=>{
+    const box = document.createElement("div");
+    box.className = "box";
 
+    box.innerHTML = `
+      <div class="genre-tag">${item.genre}</div>
+      <h3>${item.name}</h3>
+      <p>${item.description}</p>
+      <button>Launch Game</button>
+    `;
+
+    const button = box.querySelector("button");
+
+    button.onclick = async ()=>{
       const res = await fetch(item.url);
-
-      if(!res.ok){
-        throw new Error(`Fetch failed: ${res.status}`);
-      }
-
       let html = await res.text();
 
-      const baseHref =
-        item.url.slice(0,item.url.lastIndexOf('/') + 1);
+      const base = item.url.slice(0,item.url.lastIndexOf('/')+1);
 
-      if(/<head[^>]*>/i.test(html)){
-
-        html = html.replace(
-          /<head([^>]*)>/i,
-          `<head$1><base href="${baseHref}">`
-        );
-
+      if(/<head/i.test(html)){
+        html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${base}">`);
       } else {
-
-        html =
-          `<head><base href="${baseHref}"></head>` + html;
-
+        html = `<head><base href="${base}"></head>` + html;
       }
 
       const w = window.open("about:blank");
-
-      if(!w){
-        throw new Error("Popup blocked");
-      }
-
-      w.document.open();
       w.document.write(html);
       w.document.close();
+    };
 
-      button.textContent = "Launch Game";
+    container.appendChild(box);
+    boxes.push({box,item});
+  });
+}
 
-    } catch(err){
+/* FILTER */
+function applyFilters(){
+  const q = search.value.toLowerCase();
 
-      console.error(err);
+  boxes.forEach(({box,item})=>{
+    const match =
+      item.name.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q) ||
+      item.genre.toLowerCase().includes(q);
 
-      button.textContent = "Launch Game";
+    const ok = activeGenre==="All" || item.genre===activeGenre;
 
-      alert("Failed to load page: " + err.message);
+    box.style.display = (match && ok) ? "block" : "none";
+  });
+}
 
-    }
+search.addEventListener("input",applyFilters);
 
-  };
+render(data);
 
-  container.appendChild(box);
-
-});
-/* =========================
-   THEME SYSTEM
-========================= */
-
-const themeSelector =
-  document.getElementById("themeSelector");
-
-const savedTheme =
-  localStorage.getItem("hub-theme") || "dark";
-
-document.body.classList.add(savedTheme);
-
-themeSelector.value = savedTheme;
-
-themeSelector.addEventListener("change", () => {
-
-  document.body.classList.remove(
-    "dark",
-    "light",
-    "neon"
-  );
-
-  document.body.classList.add(
-    themeSelector.value
-  );
-
-  localStorage.setItem(
-    "hub-theme",
-    themeSelector.value
-  );
-
-});
 </script>
 
 </body>
