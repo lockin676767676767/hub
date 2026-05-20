@@ -563,21 +563,22 @@
          }
 
          /* FILTER */
-         function applyFilters() {
-            const q = search.value.toLowerCase();
+ function applyFilters(){
+  const q = search.value.toLowerCase();
 
-            boxes.forEach(({ box, item }) => {
-               const match =
-                  item.name.toLowerCase().includes(q) ||
-                  item.description.toLowerCase().includes(q) ||
-                  item.genre.toLowerCase().includes(q);
+  const filtered = data.filter(item => {
+    const match =
+      item.name.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q) ||
+      item.genre.toLowerCase().includes(q);
 
-               const ok = activeGenre === "All" || item.genre === activeGenre;
+    const ok = activeGenre === "All" || item.genre === activeGenre;
 
-               box.style.display = match && ok ? "block" : "none";
-            });
-         }
+    return match && ok;
+  });
 
+  render(filtered);
+}
          search.addEventListener("input", applyFilters);
 
          render(data);
