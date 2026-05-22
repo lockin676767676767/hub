@@ -265,12 +265,23 @@
          }
 
          /* overlay */
-         .box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-         }
+.box::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+
+   /* theme-aware tinted overlay */
+   background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent1) 35%, transparent),
+      color-mix(in srgb, var(--accent2) 25%, transparent),
+      rgba(0, 0, 0, 0.55)
+   );
+
+   /* keeps image visible but unified with theme */
+   mix-blend-mode: multiply;
+   opacity: 0.9;
+}
 
          /* keep content above overlay */
          .box * {
@@ -842,15 +853,15 @@
                accent2: "#ff9500",
             },
 
-            frost: {
-               bg: "linear-gradient(135deg, #dbeafe, #e0f2fe, #f0f9ff)",
-               card: "rgba(255, 255, 255, 0.75)",
-               border: "rgba(59, 130, 246, 0.2)",
-               text: "#0f172a",
-               muted: "#475569",
-               accent1: "#38bdf8",
-               accent2: "#0ea5e9",
-            },
+frost: {
+   bg: "linear-gradient(135deg, #050b14, #071a2e, #0a2440)",
+   card: "rgba(10, 25, 45, 0.75)",
+   border: "rgba(56, 189, 248, 0.25)",
+   text: "#e6f4ff",
+   muted: "#9cccf0",
+   accent1: "#38bdf8",
+   accent2: "#0ea5e9",
+},
 
             toxic: {
                bg: "linear-gradient(135deg, #020b06, #041a10, #0b2a14)",
