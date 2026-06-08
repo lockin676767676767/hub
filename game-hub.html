@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Hub - Play Your Favorite Games</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🎮 Game Hub</h1>
+                <nav class="nav">
+                    <a href="#featured" class="nav-link">Featured</a>
+                    <a href="#all-games" class="nav-link">All Games</a>
+                    <a href="#favorites" class="nav-link">Favorites</a>
+                </nav>
+                <div class="header-controls">
+                    <form class="theme-form">
+                        <fieldset class="theme-selector">
+                            <legend>Theme</legend>
+                            <label class="theme-label">
+                                <input type="radio" name="theme" value="light" checked />
+                                Light
+                            </label>
+                            <label class="theme-label">
+                                <input type="radio" name="theme" value="dark" />
+                                Dark
+                            </label>
+                            <label class="theme-label">
+                                <input type="radio" name="theme" value="auto" />
+                                Auto
+                            </label>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="featured">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to Game Hub</h2>
+                <p>Discover and play amazing games. Use the favorites feature to bookmark your preferred games!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section class="section" id="all-games">
+        <div class="container">
+            <h2 class="section-title">Popular Games</h2>
+            <div class="games-grid">
+                <!-- Game Card 1 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🎯</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Tic Tac Toe Master</h3>
+                        <p class="game-description">Classic strategy game. Can you beat the AI?</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Strategy</span>
+                            <span class="game-tag">Classic</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/tictactoe.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/tictactoe.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 2 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🎲</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Dice Roller</h3>
+                        <p class="game-description">Roll the dice and test your luck!</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Luck</span>
+                            <span class="game-tag">Quick</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/dice.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/dice.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 3 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🎪</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Memory Match</h3>
+                        <p class="game-description">Test your memory by matching pairs!</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Puzzle</span>
+                            <span class="game-tag">Memory</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/memory.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/memory.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 4 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🏃</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Speed Runner</h3>
+                        <p class="game-description">Complete levels as fast as you can!</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Action</span>
+                            <span class="game-tag">Speed</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/speedrunner.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/speedrunner.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 5 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🎨</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Color Quest</h3>
+                        <p class="game-description">Find the right color combinations!</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Puzzle</span>
+                            <span class="game-tag">Colors</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/colorquest.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/colorquest.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 6 -->
+                <div class="game-card">
+                    <div class="game-image">
+                        <div class="placeholder-image">🎭</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Guess the Word</h3>
+                        <p class="game-description">Solve the mystery word in 6 tries!</p>
+                        <div class="game-meta">
+                            <span class="game-tag">Word</span>
+                            <span class="game-tag">Brain</span>
+                        </div>
+                        <div class="game-actions">
+                            <a href="games/guessword.html" class="btn btn-primary">Same Tab</a>
+                            <a href="games/guessword.html" target="_blank" class="btn btn-secondary">New Tab</a>
+                            <form class="favorite-form" method="post">
+                                <label class="favorite-btn">
+                                    <input type="checkbox" class="favorite-checkbox" />
+                                    ⭐ Add to Favorites
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section class="section section-favorites" id="favorites">
+        <div class="container">
+            <h2 class="section-title">Your Favorites</h2>
+            <div class="favorites-message">
+                <p>No favorites yet! Click the star icon on any game to add it to your favorites.</p>
+            </div>
+            <div class="games-grid" id="favorites-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Game Hub. All rights reserved. Built with ❤️</p>
+        </div>
+    </footer>
+</body>
+</html>
