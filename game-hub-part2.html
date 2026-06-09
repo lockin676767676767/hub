@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Hub - Part 2: Games & Suggestions</title>
+    <style>
+:root {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary-color: #ec4899;
+  --bg-light: #f8fafc;
+  --bg-dark: #0f172a;
+  --bg-card-light: #ffffff;
+  --bg-card-dark: #1e293b;
+  --text-light: #334155;
+  --text-dark: #f1f5f9;
+  --border-light: #e2e8f0;
+  --border-dark: #334155;
+  --success: #10b981;
+}
+
+body {
+  --bg: var(--bg-light);
+  --bg-card: var(--bg-card-light);
+  --text: var(--text-light);
+  --border: var(--border-light);
+}
+
+body.dark-theme {
+  --bg: var(--bg-dark);
+  --bg-card: var(--bg-card-dark);
+  --text: var(--text-dark);
+  --border: var(--border-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.section {
+  padding: 3rem 0;
+  background: var(--bg);
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.game-image {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-image {
+  font-size: 4rem;
+}
+
+.game-info {
+  padding: 1.5rem;
+}
+
+.game-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.game-description {
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.game-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.game-tag {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.game-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  flex: 1;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.favorite-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  flex: 1;
+}
+
+/* SUGGESTIONS SECTION */
+.section-suggestions {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+}
+
+.suggestions-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.suggestion-form {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+}
+
+.success-message {
+  display: none;
+  background: var(--success);
+  color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  animation: slideIn 0.3s ease;
+}
+
+.success-message.show {
+  display: block;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestions-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.suggestion-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.suggestion-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.suggestion-description {
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.suggestion-meta {
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.suggestions-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text);
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .game-actions {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🎮 Game Hub - Part 2</h1>
+                <nav class="nav">
+                    <a href="game-hub-part1.html" class="nav-link">← Back to Part 1</a>
+                    <a href="#all-games" class="nav-link">Games</a>
+                    <a href="#suggestions" class="nav-link">Suggest</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Games Part 2 -->
+    <section class="section" id="all-games">
+        <div class="container">
+            <h2 class="section-title">🎯 Games (21-40)</h2>
+            <div class="games-grid" id="gamesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Suggestions Section -->
+    <section class="section section-suggestions" id="suggestions">
+        <div class="container">
+            <h2 class="section-title">💡 Suggest a Game</h2>
+            <div class="suggestions-container">
+                <div id="successMessage" class="success-message">
+                    ✅ Thank you! Your suggestion has been saved.
+                </div>
+                <form class="suggestion-form" id="suggestionForm">
+                    <div class="form-group">
+                        <label for="gameName">Game Name *</label>
+                        <input type="text" id="gameName" name="gameName" placeholder="e.g., Minecraft, Fortnite, etc." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="gameDescription">Description *</label>
+                        <textarea id="gameDescription" name="gameDescription" placeholder="Describe the game and why it should be added..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="gameUrl">Game URL (optional)</label>
+                        <input type="url" id="gameUrl" name="gameUrl" placeholder="https://example.com/game" />
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Your Email (optional)</label>
+                        <input type="email" id="userEmail" name="userEmail" placeholder="your@email.com" />
+                    </div>
+                    <button type="submit" class="submit-btn">📤 Submit Suggestion</button>
+                </form>
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--text);">Recent Suggestions</h3>
+                <div class="suggestions-list" id="suggestionsList">
+                    <div class="suggestions-empty">
+                        No suggestions yet. Be the first to suggest a game!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Game Hub. All rights reserved. 🎮</p>
+        </div>
+    </footer>
+
+    <script>
+        // GAME DATA - PART 2 (Games 21-40)
+        const games = [
+            {
+                title: "Crossy Road",
+                emoji: "🚦",
+                description: "Cross endless roadways with blocky characters!",
+                tags: ["Arcade", "Endless"],
+                link: "https://github.com/lockin676767676767/games/raw/main/crossyroad.html"
+            },
+            {
+                title: "Dadish",
+                emoji: "🐣",
+                description: "A charming dad radish adventure!",
+                tags: ["Adventure", "Platformer"],
+                link: "https://github.com/lockin676767676767/games/raw/main/dadish1.html"
+            },
+            {
+                title: "Dadish 2",
+                emoji: "🥬",
+                description: "More radish adventures await!",
+                tags: ["Adventure", "Platformer"],
+                link: "https://github.com/lockin676767676767/games/raw/main/dadish2.html"
+            },
+            {
+                title: "Doodle Jump",
+                emoji: "🦗",
+                description: "Jump your way to the top!",
+                tags: ["Arcade", "Classic"],
+                link: "https://github.com/lockin676767676767/games/raw/main/doodlejump.html"
+            },
+            {
+                title: "Dreadhead Parkour",
+                emoji: "🤸",
+                description: "Parkour through the city!",
+                tags: ["Action", "Parkour"],
+                link: "https://github.com/lockin676767676767/games/raw/main/dreadheadparkour.html"
+            },
+            {
+                title: "Drift Boss",
+                emoji: "🏎️",
+                description: "Master the art of drifting!",
+                tags: ["Racing", "Skill"],
+                link: "https://github.com/lockin676767676767/games/raw/main/driftboss.html"
+            },
+            {
+                title: "Drive Mad",
+                emoji: "😠",
+                description: "Navigate crazy car stunts!",
+                tags: ["Racing", "Stunt"],
+                link: "https://github.com/lockin676767676767/games/raw/main/drivemad.html"
+            },
+            {
+                title: "Eggy Car",
+                emoji: "🥚",
+                description: "Don't break the egg while driving!",
+                tags: ["Puzzle", "Racing"],
+                link: "https://github.com/lockin676767676767/games/raw/main/eggycar.html"
+            },
+            {
+                title: "Elastic Face",
+                emoji: "😊",
+                description: "Stretch and flex your way through!",
+                tags: ["Puzzle", "Fun"],
+                link: "https://github.com/lockin676767676767/games/raw/main/elasticface.html"
+            },
+            {
+                title: "Evil Glitch",
+                emoji: "👾",
+                description: "Defeat the glitch!",
+                tags: ["Action", "Short"],
+                link: "https://github.com/lockin676767676767/games/raw/main/evilglitch.html"
+            },
+            {
+                title: "Flappy Bird",
+                emoji: "🐦",
+                description: "The classic flappy bird game!",
+                tags: ["Arcade", "Classic"],
+                link: "https://github.com/lockin676767676767/games/raw/main/flappybird.html"
+            },
+            {
+                title: "Fluid Simulator",
+                emoji: "💧",
+                description: "Play with fluid physics!",
+                tags: ["Simulation", "Physics"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fluidsimulator.html"
+            },
+            {
+                title: "Five Nights at Freddy's",
+                emoji: "🤖",
+                description: "Guard yourself from animatronics!",
+                tags: ["Horror", "Survival"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fnaf.html"
+            },
+            {
+                title: "FNAF 2",
+                emoji: "🤖",
+                description: "The sequel continues...",
+                tags: ["Horror", "Survival"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fnaf2.html"
+            },
+            {
+                title: "FNAF 3",
+                emoji: "🔥",
+                description: "The nightmare continues...",
+                tags: ["Horror", "Survival"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fnaf3.html"
+            },
+            {
+                title: "FNAF 4",
+                emoji: "😱",
+                description: "The final chapter...",
+                tags: ["Horror", "Survival"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fnaf4.html"
+            },
+            {
+                title: "Football Legends",
+                emoji: "⚽",
+                description: "Play football like a legend!",
+                tags: ["Sports", "Multiplayer"],
+                link: "https://github.com/lockin676767676767/games/raw/main/footballlegends.html"
+            },
+            {
+                title: "Fruit Ninja",
+                emoji: "🍎",
+                description: "Slice fruit like a ninja!",
+                tags: ["Action", "Arcade"],
+                link: "https://github.com/lockin676767676767/games/raw/main/fruitninja.html"
+            },
+            {
+                title: "Funny Battle",
+                emoji: "⚔️",
+                description: "Hilarious battles with physics!",
+                tags: ["Action", "Multiplayer"],
+                link: "https://github.com/lockin676767676767/games/raw/main/funnybattle.html"
+            },
+            {
+                title: "Funny Shooter 2",
+                emoji: "🔫",
+                description: "Hilarious shooting action!",
+                tags: ["Shooter", "Fun"],
+                link: "https://github.com/lockin676767676767/games/raw/main/funnyshooter2.html"
+            }
+        ];
+
+        // THEME SWITCHING
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+
+        // RENDER GAMES
+        function renderGames() {
+            const grid = document.getElementById('gamesGrid');
+            grid.innerHTML = games.map(game => `
+                <div class="game-card">
+                    <div class="game-image"><div class="placeholder-image">${game.emoji}</div></div>
+                    <div class="game-info">
+                        <h3 class="game-title">${game.title}</h3>
+                        <p class="game-description">${game.description}</p>
+                        <div class="game-meta">${game.tags.map(tag => `<span class="game-tag">${tag}</span>`).join('')}</div>
+                        <div class="game-actions">
+                            <a href="${game.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Launch</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderGames();
+
+        // SUGGESTIONS SYSTEM
+        const suggestionForm = document.getElementById('suggestionForm');
+        const successMessage = document.getElementById('successMessage');
+        const suggestionsList = document.getElementById('suggestionsList');
+
+        let suggestions = JSON.parse(localStorage.getItem('gameSuggestions')) || [];
+        renderSuggestions();
+
+        suggestionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const suggestion = {
+                id: Date.now(),
+                name: document.getElementById('gameName').value,
+                description: document.getElementById('gameDescription').value,
+                url: document.getElementById('gameUrl').value || 'Not provided',
+                email: document.getElementById('userEmail').value || 'Anonymous',
+                timestamp: new Date().toLocaleString()
+            };
+
+            suggestions.unshift(suggestion);
+            localStorage.setItem('gameSuggestions', JSON.stringify(suggestions));
+
+            suggestionForm.reset();
+            successMessage.classList.add('show');
+            renderSuggestions();
+
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        });
+
+        function renderSuggestions() {
+            if (suggestions.length === 0) {
+                suggestionsList.innerHTML = '<div class="suggestions-empty">No suggestions yet. Be the first to suggest a game!</div>';
+                return;
+            }
+
+            suggestionsList.innerHTML = suggestions.map(s => `
+                <div class="suggestion-item">
+                    <div class="suggestion-name">🎮 ${s.name}</div>
+                    <div class="suggestion-description">${s.description}</div>
+                    ${s.url !== 'Not provided' ? `<div style="margin-bottom: 0.5rem;"><a href="${s.url}" target="_blank" style="color: var(--primary-color); text-decoration: none;">🔗 View Game</a></div>` : ''}
+                    <div class="suggestion-meta">
+                        📧 ${s.email} • 📅 ${s.timestamp}
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
